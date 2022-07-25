@@ -1,6 +1,6 @@
 <template>
-    <div class="ma-layout-left" :class="{ collapsed: isCollapse }">
-        <el-menu default-active="2" :collapse="isCollapse">
+    <div class="ma-layout-left" :class="{ collapsed: !isCollapse }">
+        <el-menu default-active="2" :collapse="!isCollapse">
             <el-sub-menu index="2" popper-class="ma-layout-leftmenu-popper">
                 <template #title>
                     <el-icon><location /></el-icon>
@@ -35,8 +35,9 @@ const isCollapse = computed(() => store.state.global.collapsed);
 .ma-layout-left {
     width: 200px;
     height: 100vh;
-    transition-duration: 0.1s;
+    transition-duration: 0.6s;
     background-color: #222834;
+    overflow-x: hidden;
 
     &.collapsed {
         width: 63px;
@@ -48,6 +49,10 @@ const isCollapse = computed(() => store.state.global.collapsed);
             width: 200px;
             min-height: 400px;
         }
+    }
+
+    .el-menu {
+        border: none !important;
     }
 
     .el-sub-menu {

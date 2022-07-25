@@ -19,7 +19,7 @@ const StoreModel: ModuleType = {
     namespaced: true,
     name: "global",
     state: {
-        collapsed: false
+        collapsed: true
     },
     mutations: {
         changeLayoutCollapsed(state, payload) {
