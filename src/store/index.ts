@@ -2,7 +2,7 @@ import { InjectionKey } from "vue";
 import { createStore, Store, useStore as baseUseStore } from "vuex";
 import global, { GlobalStateType } from "./global";
 
-interface State {
+export interface State {
     global: GlobalStateType;
 }
 

@@ -1,7 +1,8 @@
-import { defineConfig, Plugin } from "vite";
+import { defineConfig, Plugin, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import * as path from "path";
 import eslintPlugin from "vite-plugin-eslint";
+import { viteMockServe } from "vite-plugin-mock";
 
 export default defineConfig(({ mode, command }) => {
     // 开发服务器端口
@@ -11,14 +12,22 @@ export default defineConfig(({ mode, command }) => {
     const plugins: (Plugin | Plugin[])[] = [
         vue(),
         eslintPlugin({
-            include: ["src/**/*.js", "src/**/*.vue", "src/*.js", "src/*.vue"]
+            include: ["src/**/*.ts", "src/**/*.vue", "src/*.js", "src/*.vue"]
         })
     ];
 
+    const env = loadEnv(mode, process.cwd());
     // vitePluginMock
-    // mode === "development" &&
-    //     process.env.APP_MOCK === "true" &&
-    //     plugins.push(vitePluginMock());
+    mode === "development" &&
+        env.VITE_APP_MOCK === "true" &&
+        plugins.push(
+            viteMockServe({
+                ignore: /^\_/,
+                mockPath: "./mocks",
+                localEnabled: true,
+                // injectCode: `import { setupProdMockServer } from './mocks';setupProdMockServer();`
+            })
+        );
 
     // @vitejs/plugin-legacy
     // command === "build" && plugins.push(legacy());

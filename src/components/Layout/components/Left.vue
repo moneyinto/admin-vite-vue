@@ -1,18 +1,29 @@
 <template>
     <div class="ma-layout-left" :class="{ collapsed: !isCollapse }">
-        <el-menu default-active="2" :collapse="!isCollapse">
-            <el-sub-menu index="2" popper-class="ma-layout-leftmenu-popper">
+        <div class="ma-layout-logo">
+            <router-link to="/" class="logo-url">
+                <img class="logo" v-if="!isCollapse" src="@/assets/vue.svg" />
+                <h3 v-else class="logo-title">AdminElementVue</h3>
+            </router-link>
+        </div>
+        <el-menu router :default-active="route.path" :collapse="!isCollapse">
+            <el-sub-menu
+                v-for="item in menuList"
+                :key="item.name"
+                :index="item.path || ''"
+                popper-class="ma-layout-leftmenu-popper"
+            >
                 <template #title>
-                    <el-icon><location /></el-icon>
-                    <span>Navigator On1</span>
+                    <component :is="item.icon" /> &nbsp;
+                    <span>{{ item.name }}</span>
                 </template>
-                <el-menu-item index="2-1">
-                    <el-icon><icon-menu /></el-icon>
-                    <template #title>Navigator Two</template>
-                </el-menu-item>
-                <el-menu-item index="4">
-                    <el-icon><setting /></el-icon>
-                    <template #title>Navigator Four</template>
+                <el-menu-item
+                    v-for="subItem in item.children || []"
+                    :key="subItem.name"
+                    :index="subItem.path"
+                >
+                    <component :is="subItem.icon" /> &nbsp;
+                    <template #title>{{ subItem.name }}</template>
                 </el-menu-item>
             </el-sub-menu>
         </el-menu>
@@ -20,15 +31,13 @@
 </template>
 
 <script lang="ts" setup>
-import {
-    Menu as IconMenu,
-    Location,
-    Setting
-} from "@element-plus/icons-vue";
 import { computed } from "vue";
 import { useStore } from "@/store";
+import { useRoute } from "vue-router";
 const store = useStore();
 const isCollapse = computed(() => store.state.global.collapsed);
+const menuList = computed(() => store.state.global.menuList);
+const route = useRoute();
 </script>
 
 <style lang="scss">
@@ -117,6 +126,30 @@ const isCollapse = computed(() => store.state.global.collapsed);
             color: #fff !important;
             background: none;
         }
+    }
+}
+
+.ma-layout-logo {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    .logo-url {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .logo-title {
+        display: inline-block;
+        margin: 0;
+        font-size: 16px;
+        color: #c0c4cc;
+    }
+    .logo {
+        display: block;
+        width: 20px;
+        margin: 15px auto;
     }
 }
 </style>

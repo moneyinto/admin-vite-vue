@@ -18,6 +18,10 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: "/login",
         component: () => import("@/views/login/index.vue")
+    },
+    {
+        path: "/:pathMatch(.*)*",
+        component: () => import("@/components/Error/404.vue")
     }
 ];
 
@@ -26,7 +30,7 @@ const router = createRouter({
         return { top: 0 };
     },
     history: createWebHashHistory(import.meta.env.BASE_URL),
-    routes: routes
+    routes
 });
 
 router.beforeEach(() => {

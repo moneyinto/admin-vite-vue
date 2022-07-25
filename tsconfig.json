@@ -16,11 +16,13 @@
         "resolveJsonModule": true,
         "noImplicitAny": false,
         "lib": ["ESNext", "DOM"],
+        "types": ["vite/client"],
         "paths": {
             "@/*": ["src/*"]
         }
     },
     "include": [
+        "./mocks/**/*.ts",
         "src/**/*.ts",
         "src/**/*.d.ts",
         "src/**/*.tsx",

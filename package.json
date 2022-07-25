@@ -11,7 +11,9 @@
     },
     "dependencies": {
         "@icon-park/vue-next": "^1.4.2",
+        "axios": "^0.27.2",
         "element-plus": "^2.2.9",
+        "localforage": "^1.10.0",
         "nprogress": "^0.2.0",
         "vue": "^3.2.37",
         "vue-router": "^4.1.2",
@@ -19,17 +21,19 @@
     },
     "devDependencies": {
         "@babel/eslint-parser": "^7.18.9",
-        "@types/node": "^18.0.6",
+        "@types/node": "^18.6.1",
         "@types/nprogress": "^0.2.0",
         "@vitejs/plugin-vue": "^3.0.0",
         "@vue/eslint-config-standard": "^8.0.0",
         "@vue/eslint-config-typescript": "^11.0.0",
         "eslint": "^8.20.0",
         "eslint-plugin-vue": "^9.2.0",
+        "mockjs": "^1.1.0",
         "sass": "^1.53.0",
         "typescript": "^4.6.4",
         "vite": "^3.0.0",
         "vite-plugin-eslint": "^1.7.0",
+        "vite-plugin-mock": "^2.9.6",
         "vue-tsc": "^0.38.4"
     }
 }
