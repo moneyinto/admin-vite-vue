@@ -3,7 +3,7 @@
         <div class="login-content">
             <div class="login-text">云平台登录</div>
             <div class="login-content-main">
-                <el-form class="login-content-form">
+                <el-form class="login-content-form" @keyup.enter="onSignIn">
                     <el-form-item>
                         <el-autocomplete
                             type="text"
@@ -16,6 +16,7 @@
                             @blur="isFocus = false"
                             @select="handleSelect"
                             autocomplete="off"
+
                         >
                             <template #prefix>
                                 <img

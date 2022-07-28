@@ -38,7 +38,8 @@ export enum STORAGE_TYPES {
 }
 
 export const get = async (key: STORAGE_TYPES): Promise<unknown> => {
-    return await localforage.getItem(key);
+    const value = await localforage.getItem(key);
+    return value ? JSON.parse(value as string) : value;
 };
 
 export const set = async (
@@ -46,7 +47,7 @@ export const set = async (
     data: unknown
 ): Promise<boolean> => {
     try {
-        await localforage.setItem(settings.siteTokenKey, data);
+        await localforage.setItem(key, typeof data === "string" ? data : JSON.stringify(data));
         return true;
     } catch (error) {
         return false;
