@@ -1,7 +1,9 @@
 <template>
     <div class="ma-layout-right">
-        <Nav />
-        <BreadCrumbs />
+        <div class="ma-layout-header">
+            <Nav />
+            <Tab />
+        </div>
         <div class="ma-layout-content">
             <router-view></router-view>
         </div>
@@ -10,7 +12,7 @@
 
 <script setup lang="ts">
 import Nav from "./Nav.vue";
-import BreadCrumbs from "./BreadCrumbs.vue";
+import Tab from "./Tab.vue";
 </script>
 
 <style lang="scss" scoped>
@@ -21,8 +23,16 @@ import BreadCrumbs from "./BreadCrumbs.vue";
     flex-direction: column;
 }
 
+.ma-layout-header {
+    box-shadow: 0 -1px 4px #ccc;
+    position: relative;
+}
+
 .ma-layout-content {
     flex: 1;
     min-height: 0;
+    padding: 15px;
+    overflow-y: auto;
+    background: #f6f6f6;
 }
 </style>

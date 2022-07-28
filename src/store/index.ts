@@ -1,12 +1,10 @@
-import { InjectionKey } from "vue";
+import { getCurrentInstance, InjectionKey } from "vue";
 import { createStore, Store, useStore as baseUseStore } from "vuex";
 import global, { GlobalStateType } from "./global";
 
 export interface State {
     global: GlobalStateType;
 }
-
-export const key = "StoreKey";
 
 export const store = createStore<State>({
     modules: {
@@ -15,4 +13,8 @@ export const store = createStore<State>({
     getters: {}
 });
 
-export const useStore = () => baseUseStore(key);
+export const useStore = () => {
+    const instance = getCurrentInstance();
+    const key: InjectionKey<Store<State>> = instance?.appContext.config.globalProperties.$storeKey;
+    return baseUseStore(key);
+};

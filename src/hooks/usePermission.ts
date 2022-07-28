@@ -1,5 +1,4 @@
 import { useStore } from "@/store";
-import { dealMenuListForSingle } from "@/utils/permission";
 import { getToken } from "@/utils/storage";
 import { computed } from "vue";
 import { useRouter } from "vue-router";
@@ -11,8 +10,7 @@ export default () => {
     const router = useRouter();
     const store = useStore();
     const pageList = computed(() => store.state.global.permissionPageList);
-    const breadCrumbs = computed(() => store.state.global.breadCrumbs);
-    const menuList = computed(() => store.state.global.menuList);
+    const pageTab = computed(() => store.state.global.pageTab);
     router.beforeEach(async (to, from, next) => {
         // 白名单界面放行
         if (whiteList.indexOf(to.path) > -1) return next();
@@ -22,12 +20,11 @@ export default () => {
             // 列表为空，默认没有请求
             await store.dispatch("global/getMenuList");
         }
-        if (pageList.value.indexOf(to.path) > -1) {
-            if (breadCrumbs.value.findIndex(item => item.path === to.path) === -1) {
-                const pageSingleList = dealMenuListForSingle(menuList.value);
-                const page = pageSingleList.find(item => item.path === to.path);
+        if (pageList.value.findIndex(item => item.path === to.path) > -1) {
+            if (pageTab.value.findIndex(item => item.path === to.path) === -1) {
+                const page = pageList.value.find(item => item.path === to.path);
                 if (page) {
-                    store.commit("global/updateBreadCrumbs", [...breadCrumbs.value, page]);
+                    store.commit("global/updatePageTab", [...pageTab.value, page]);
                 }
             }
             return next();

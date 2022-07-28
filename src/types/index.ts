@@ -1,6 +1,12 @@
+
+interface IParentItem {
+    name: string;
+    path?: string;
+}
 export interface IMenuItem {
     name: string;
     path?: string;
     icon?: string;
-    children?: IMenuItem[]
+    children?: IMenuItem[];
+    parent?: IParentItem[];
 }

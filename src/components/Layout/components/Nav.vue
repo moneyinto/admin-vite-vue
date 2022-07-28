@@ -4,6 +4,7 @@
             <MenuFold v-if="isCollapse" />
             <MenuUnfold v-else />
         </div>
+        <BreadCrumbs />
         <UserInfo />
     </div>
 </template>
@@ -12,6 +13,7 @@
 import { useStore } from "@/store";
 import { computed } from "vue";
 import UserInfo from "./UserInfo.vue";
+import BreadCrumbs from "./BreadCrumbs.vue";
 const store = useStore();
 const isCollapse = computed(() => store.state.global.collapsed);
 const switchMenu = () => {
@@ -24,7 +26,6 @@ const switchMenu = () => {
     display: flex;
     height: 50px;
     background-color: #fff;
-    justify-content: space-between;
 }
 
 .ma-layout-nav-switch {

@@ -34,8 +34,11 @@ const handleCommand = (command: string) => {
 <style lang="scss" scoped>
 .ma-user-info {
     padding-right: 15px;
+    flex: 1;
+    min-width: 0;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     .el-dropdown-link {
         color: #303133;
         cursor: pointer;
