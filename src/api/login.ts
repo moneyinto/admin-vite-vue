@@ -1,4 +1,4 @@
-import { IResponse, RequestFun } from "@/types/response";
+import { RequestFun } from "@/types/response";
 import { ILoginData } from "@/types/user";
 import request from "@/utils/request";
 

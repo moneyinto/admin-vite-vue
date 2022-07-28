@@ -133,7 +133,6 @@ const onSignIn = async () => {
     loading.value = false;
     if (response.resultCode === 200) {
         const recordAccountList = await get(STORAGE_TYPES.RECORD_LOGIN_LIST) || [];
-        console.log(recordAccountList);
         const index = recordAccountList.findIndex((record: IAccountItem) => {
             return record.account === formState.account;
         });

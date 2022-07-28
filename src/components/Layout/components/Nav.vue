@@ -4,12 +4,14 @@
             <MenuFold v-if="isCollapse" />
             <MenuUnfold v-else />
         </div>
+        <UserInfo />
     </div>
 </template>
 
 <script setup lang="ts">
 import { useStore } from "@/store";
 import { computed } from "vue";
+import UserInfo from "./UserInfo.vue";
 const store = useStore();
 const isCollapse = computed(() => store.state.global.collapsed);
 const switchMenu = () => {
@@ -21,6 +23,8 @@ const switchMenu = () => {
 .ma-layout-nav {
     display: flex;
     height: 50px;
+    background-color: #222834;
+    justify-content: space-between;
 }
 
 .ma-layout-nav-switch {
@@ -31,8 +35,10 @@ const switchMenu = () => {
     justify-content: center;
     cursor: pointer;
     font-size: 20px;
+    color: #c0c4cc;
     &:hover {
-        background: #f0f0f0;
+        color: #fff;
+        background: #000c17;
     }
 }
 </style>

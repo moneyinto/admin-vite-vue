@@ -14,7 +14,7 @@
                 popper-class="ma-layout-leftmenu-popper"
             >
                 <template #title>
-                    <component :is="item.icon" /> &nbsp;
+                    <component size="16px" :is="item.icon" /> &nbsp;
                     <span>{{ item.name }}</span>
                 </template>
                 <el-menu-item
@@ -22,7 +22,7 @@
                     :key="subItem.name"
                     :index="subItem.path"
                 >
-                    <component :is="subItem.icon" /> &nbsp;
+                    <component size="16px" :is="subItem.icon" /> &nbsp;
                     <template #title>{{ subItem.name }}</template>
                 </el-menu-item>
             </el-sub-menu>
@@ -67,8 +67,14 @@ const route = useRoute();
     .el-sub-menu {
         .el-sub-menu__title {
             color: rgba(255, 255, 255, 0.7);
-            .el-icon {
-                color: rgba(255, 255, 255, 0.7);
+            .i-icon {
+                // font-size: 16px;
+                margin-left: 3px;
+                width: 16px;
+                height: 16px;
+                visibility: visible;
+                overflow: initial;
+                color: rgba(255, 255, 255, 0.7) !important;
             }
         }
         .el-menu {
