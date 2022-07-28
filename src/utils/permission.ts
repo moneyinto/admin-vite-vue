@@ -10,3 +10,19 @@ export const dealMenuListForPageList = (menuList: IMenuItem[]) => {
     });
     return pageList;
 };
+
+export const dealMenuListForSingle = (menuList: IMenuItem[]) => {
+    let pageList: IMenuItem[] = [];
+    menuList.forEach(item => {
+        if (item.path) {
+            pageList.push({
+                name: item.name,
+                path: item.path
+            });
+        }
+        if (item.children) {
+            pageList = pageList.concat(dealMenuListForSingle(item.children));
+        }
+    });
+    return pageList;
+};

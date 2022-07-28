@@ -1,3 +1,3 @@
-<template>工作台</template>
+<template>使用文档</template>
 
 <script setup lang="ts"></script>

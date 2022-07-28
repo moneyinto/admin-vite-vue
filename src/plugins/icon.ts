@@ -1,6 +1,7 @@
 import { App } from "vue";
 import "@icon-park/vue-next/styles/index.css";
 import {
+    CloseSmall,
     Down,
     Home,
     MenuFold,
@@ -22,5 +23,6 @@ export default {
         app.component("Workbench", Workbench);
         app.component("ViewList", ViewList);
         app.component("ArrowDown", Down);
+        app.component("CloseSmall", CloseSmall);
     }
 };

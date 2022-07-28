@@ -37,7 +37,7 @@ const handleCommand = (command: string) => {
     display: flex;
     align-items: center;
     .el-dropdown-link {
-        color: #c0c4cc;
+        color: #303133;
         cursor: pointer;
         display: flex;
         align-items: center;

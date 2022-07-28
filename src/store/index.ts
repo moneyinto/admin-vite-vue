@@ -6,9 +6,7 @@ export interface State {
     global: GlobalStateType;
 }
 
-export const key: InjectionKey<
-    Store<State>
-> = Symbol("");
+export const key = "StoreKey";
 
 export const store = createStore<State>({
     modules: {

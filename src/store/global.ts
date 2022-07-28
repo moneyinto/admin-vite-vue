@@ -8,9 +8,11 @@ export interface GlobalStateType {
     // 左侧展开收起
     collapsed: boolean;
     // 菜单列表
-    menuList: IMenuItem[],
+    menuList: IMenuItem[];
     // 界面权限
-    permissionPageList: string[]
+    permissionPageList: string[];
+    // 面包屑
+    breadCrumbs: IMenuItem[];
 }
 
 interface ModuleType {
@@ -21,6 +23,7 @@ interface ModuleType {
         changeLayoutCollapsed: Mutation<GlobalStateType>;
         updateMenuList: Mutation<GlobalStateType>;
         updatePermissionPageList: Mutation<GlobalStateType>;
+        updateBreadCrumbs: Mutation<GlobalStateType>;
     };
     actions: {
         getMenuList: Action<GlobalStateType, State>
@@ -33,7 +36,13 @@ const StoreModel: ModuleType = {
     state: {
         collapsed: true,
         menuList: [],
-        permissionPageList: []
+        permissionPageList: [],
+        breadCrumbs: [
+            {
+                name: "工作台",
+                path: "/workplace"
+            }
+        ]
     },
     mutations: {
         changeLayoutCollapsed(state, payload) {
@@ -44,6 +53,9 @@ const StoreModel: ModuleType = {
         },
         updatePermissionPageList(state, payload) {
             state.permissionPageList = payload;
+        },
+        updateBreadCrumbs(state, payload) {
+            state.breadCrumbs = payload;
         }
     },
     actions: {

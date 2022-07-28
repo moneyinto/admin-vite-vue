@@ -10,7 +10,7 @@
             <el-sub-menu
                 v-for="item in menuList"
                 :key="item.name"
-                :index="item.path || ''"
+                :index="item.name"
                 popper-class="ma-layout-leftmenu-popper"
             >
                 <template #title>

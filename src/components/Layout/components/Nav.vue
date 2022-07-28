@@ -23,7 +23,7 @@ const switchMenu = () => {
 .ma-layout-nav {
     display: flex;
     height: 50px;
-    background-color: #222834;
+    background-color: #fff;
     justify-content: space-between;
 }
 
@@ -35,10 +35,9 @@ const switchMenu = () => {
     justify-content: center;
     cursor: pointer;
     font-size: 20px;
-    color: #c0c4cc;
+    color: #303133;
     &:hover {
-        color: #fff;
-        background: #000c17;
+        background: #f0f0f0;
     }
 }
 </style>
