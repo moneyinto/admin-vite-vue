@@ -6,6 +6,7 @@ import Icon from "./plugins/icon";
 import "./assets/css/global.scss";
 import { State, store } from "./store";
 import { Store } from "vuex";
+import Directive from "./plugins/directives";
 
 const key: InjectionKey<
     Store<State>
@@ -14,6 +15,7 @@ const key: InjectionKey<
 const app = createApp(App);
 app.config.globalProperties.$storeKey = key;
 app.use(store, key);
+app.use(Directive);
 app.use(router);
 app.use(ElementPlus, { size: "default" });
 app.use(Icon);

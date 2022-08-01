@@ -13,6 +13,8 @@ export interface GlobalStateType {
     permissionPageList: IMenuItem[];
     // 页面tab
     pageTab: IMenuItem[];
+    // 功能权限
+    permissionFuncs: string[];
 }
 
 interface ModuleType {
@@ -24,6 +26,7 @@ interface ModuleType {
         updateMenuList: Mutation<GlobalStateType>;
         updatePermissionPageList: Mutation<GlobalStateType>;
         updatePageTab: Mutation<GlobalStateType>;
+        updatePermissionFuncs: Mutation<GlobalStateType>;
     };
     actions: {
         getMenuList: Action<GlobalStateType, State>
@@ -37,6 +40,7 @@ const StoreModel: ModuleType = {
         collapsed: true,
         menuList: [],
         permissionPageList: [],
+        permissionFuncs: [],
         pageTab: [
             {
                 name: "工作台",
@@ -56,6 +60,9 @@ const StoreModel: ModuleType = {
         },
         updatePageTab(state, payload) {
             state.pageTab = payload;
+        },
+        updatePermissionFuncs(state, payload) {
+            state.permissionFuncs = payload;
         }
     },
     actions: {
